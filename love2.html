@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special for Firda</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a1a;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        /* 1. TEKS MENGAMBANG AWAL */
+        #floating-text {
+            position: fixed;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff4d6d;
+            animation: float 3s ease-in-out infinite;
+            z-index: 999;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); text-shadow: 0 0 10px #ff4d6d; }
+            50% { transform: translateY(-20px); text-shadow: 0 0 30px #ff4d6d; }
+        }
+
+        /* 2. BACKGROUND & OVERLAY */
+        #video-bg {
+            position: fixed;
+            right: 0; bottom: 0;
+            min-width: 100%; min-height: 100%;
+            z-index: -2;
+            display: none;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: -1;
+            display: none;
+        }
+
+        /* 3. TOMBOL UTAMA */
+        #main-btn {
+            display: none;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.5);
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        #main-btn:hover { transform: scale(1.1); background-color: #ff758f; }
+
+        /* 4. KONTEN PESAN BUCIN */
+        #pesan-bucin {
+            display: none;
+            max-width: 85%;
+            z-index: 10;
+        }
+
+        .fade-in-text {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 2s forwards;
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 5. TOMBOL PINDAH HALAMAN */
+        #btn-pindah {
+            display: none;
+            margin-top: 40px;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: white;
+            border: 2px solid #ff4d6d;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+            opacity: 0;
+            text-decoration: none; /* Untuk tag <a> */
+            display: inline-block;
+        }
+
+        #btn-pindah:hover {
+            background-color: #ff4d6d;
+            box-shadow: 0 0 15px #ff4d6d;
+        }
+
+        @keyframes fadeInOnly {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="floating-text">I Love You, Firda... ❤️</div>
+
+    <button id="main-btn" onclick="mulaiKejutan()">Klik Untuk Kejutan ✨</button>
+
+    <div id="pesan-bucin">
+        <h1 class="fade-in-text">Dear Firda,</h1>
+        
+        <p class="fade-in-text" style="animation-delay: 1s;">
+            "Dear Firda, I just wanted to say thank you for accepting me for who I am. Having you by my side makes everything feel brighter. I am truly lucky to have someone as special as you in my life." <br>
+            I LOVE YOU SAYANGG
+        </p>
+
+        <p class="fade-in-text" style="animation-delay: 2.5s;">
+           sayangkuuu,terimakasihh yahhh udahh mauu hadirrr dii kehidupann akuuu,,makasihhh jugaaa udaahhh sabarr menghadapi sikapp akuu yangg kayakkk giniii<br>
+           makasihhh udahhh ngertiiinn akuuu,,akuu mungkinn enggaa sempurnaaa,tapii akuu janjii akuu bakall ngelakuinn yang terbaikk untukk kitaa,,SEKALII LAGII MAKASIHH SAYANGG UDAHH MAUU JADII MILIKK AKUUUU 😆😆🤍
+        </p>
+
+        <p class="fade-in-text" style="animation-delay: 4s; color: #ffcc00; font-weight: bold;">
+            Aku sayang kamu selamanya! ❤️
+        </p>
+
+        <a href="end.html" id="btn-pindah">Lanjut ayyy</a>
+    </div>
+
+    <video loop muted id="video-bg">
+        <source src="video1.mp4" type="video/mp4">
+    </video>
+    <div class="overlay" id="bg-overlay"></div>
+
+    <audio id="myAudio" loop>
+        <source src="songg.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const floatingText = document.getElementById('floating-text');
+        const mainBtn = document.getElementById('main-btn');
+        const pesanBucin = document.getElementById('pesan-bucin');
+        const video = document.getElementById('video-bg');
+        const overlay = document.getElementById('bg-overlay');
+        const audio = document.getElementById('myAudio');
+        const btnPindah = document.getElementById('btn-pindah');
+
+        // Delay 5 detik munculkan tombol utama
+        setTimeout(() => {
+            floatingText.style.display = 'none';
+            mainBtn.style.display = 'block';
+        }, 5000);
+
+        function mulaiKejutan() {
+            mainBtn.style.display = 'none';
+            video.style.display = 'block';
+            overlay.style.display = 'block';
+            video.play();
+            audio.play();
+            pesanBucin.style.display = 'block';
+
+            // Munculkan tombol pindah halaman setelah teks selesai (6 detik)
+            setTimeout(() => {
+                btnPindah.style.display = 'inline-block';
+                btnPindah.style.animation = 'fadeInOnly 1.5s forwards';
+            }, 6000);
+        }
+    </script>
+</body>
+</html>

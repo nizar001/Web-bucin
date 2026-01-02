@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Video</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0; 
+            background-color: #1a1a1a; 
+            color: white; 
+        }
+        video { width: 80%; max-width: 800px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .controls { margin-top: 20px; display: flex; gap: 20px; }
+        button { padding: 10px 25px; font-size: 16px; cursor: pointer; border: none; border-radius: 5px; }
+        .btn-back { background-color: #6c757d; color: white; }
+        .btn-end { background-color: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+
+    <h2>Menonton Video</h2>
+
+   <video id="myVideo" controls>
+    <source src="video sayang.mp4" type="video/mp4">
+</video>
+    <div class="controls">
+        <button class="btn-back" onclick="window.history.back()">Back</button>
+
+        <button class="btn-end" onclick="confirmEnd()">End</button>
+    </div>
+
+    <script>
+        function confirmEnd() {
+            if (confirm("Apakah Anda ingin mengakhiri sesi?")) {
+                // Mencoba menutup tab (hanya berfungsi jika dibuka via script atau browser tertentu)
+                window.close();
+                // Alternatif jika window.close dilarang browser: arahkan ke halaman kosong atau awal
+                window.location.href = "about:blank";
+            }
+        }
+    </script>
+    <script>
+        window.onload = function() {
+    var v = document.querySelector("video");
+    v.volume = 1.0; // Mengatur volume ke maksimal (2.0)
+};
+    </script>
+
+</body>
+</html>
